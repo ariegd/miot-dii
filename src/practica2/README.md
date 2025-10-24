@@ -1,27 +1,19 @@
+# [Práctica 2: Creación de aplicación web en Azure](https://cvdof.ucm.es/moodle/mod/assign/view.php?id=412552)
+```
 Máster IoT, curso 25-26
-├──Diseño de Insfraestructura Inteligente IoT
-└── Fernando Carlos López Hernández <fclh@ucm.es>
  	└── Práctica 2: Creación de aplicación web en Azure/ Autores
-		├── Ariel Gámez Díaz <arielg01@ucm.es>
- 		└── Jose Villacres Zumaeta <jvillacr@ucm.es>
+		├── Ariel Gámez <arielg01@ucm.es>
+ 		└── Jose Villacres <jvillacr@ucm.es>
+```
+**Índice**
+1. [Desarrollo y prueba local usando Nginx y MariaDB](#id1)
+2. [Despliegue en Azure App Service y Azure Database for MySQL](#id2)
 
-# Pasos para crear el proyecto
--------------------------------------
+### Pasos para crear el proyecto
+```
 Indice
 ├── 1) Código fuente de la aplicación (index.php, insert.php, y otros).
 ├── 2) Capturas de pantalla que demuestren.
 ├── 3) Instrucciones de despliegue breves (README), que incluyan.
-└── 4) Script SQL: Fichero .sql los comandos de creació n de usuario, BD y tablas.
-
-
-1. Código fuente de la aplicación (index.php, insert.php, y otros).
-2. Capturas de pantalla que demuestren:
-La aplicació n funcionando en local (listado e inserció n).
-La aplicació n funcionando en Azure (URL accesible).
-La BD con registros almacenados tanto en local como en Azure.
-3. Instrucciones de despliegue breves (README), que incluyan:
-Instalació n: de paquetes y servicios necesarios
-Configuració n: Pasos esenciales en local y en Azure
-URL: de la aplicació n web en Azure
-4. Script SQL: Fichero .sql los comandos de creació n de usuario, BD y tablas
-
+└── 4) Script SQL: Fichero .sql los comandos de creación de usuario, BD y tablas.
+```
