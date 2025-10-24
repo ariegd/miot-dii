@@ -7,6 +7,17 @@
                 <title>Lista de Estudiantes</title>
         </head>
         <body>
+                <?php
+                            if (isset($_GET['msg'])) {
+                                $mensaje_mostrado = urldecode($_GET['msg']);
+                                $is_error = (strpos($mensaje_mostrado, 'Error') !== false);
+                                $color = $is_error ? 'red' : 'green';
+                                
+                                echo "<p style='color: {$color}; border: 1px solid {$color}; padding: 10px; background-color: #f0f0f0; font-weight: bold;'>";
+                                echo "Mensaje: " . htmlspecialchars($mensaje_mostrado);
+                                echo "</p>";
+                            }
+                    ?>
                     <h1>Estudiantes Registrados</h1>
                     <h2>Registrar Nuevo Estudiante</h2>
                     <form action="insert.php" method="POST">

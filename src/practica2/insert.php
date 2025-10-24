@@ -17,10 +17,10 @@
                     $stmt->close();
                     $conn->close();
                     
-                    header("Ubicación: index.php?msg=" . urlencode($mensaje));
+                    header("Location: index.php?msg=" . urlencode($mensaje));
                     exit();
         } else {
-                    header("Ubicación: index.php");
+                    header("Location: index.php");
                     exit();
         }
 ?>
