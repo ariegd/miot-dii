@@ -1,6 +1,9 @@
 echo "uno: Actualizar el Sistema"
 sudo apt update && sudo apt upgrade -y
 echo "dos: Instalar Nginx (Servidor Web)"
+sudo dpkg --remove --force-remove-reinstated nginx 2>/dev/null || true
+sudo apt purge --autoremove nginx -y 2>/dev/null || true
+sudo apt install -f
 sudo apt install nginx -y
 echo "tres: Instalar MariaDB (Base de Datos)"
 sudo apt install mariadb-server -y

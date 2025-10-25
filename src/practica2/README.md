@@ -6,8 +6,8 @@ Máster IoT, curso 25-26
  		└── Jose Villacres <jvillacr@ucm.es>
 ```
 **Índice**
-1. [Desarrollo y prueba local usando Nginx y MariaDB](#id1)
-2. [Despliegue en Azure App Service y Azure Database for MySQL](#id2)
+1. [Desarrollo y prueba local usando Nginx y MariaDB](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/README.md)
+2. [Despliegue en Azure App Service y Azure Database for MySQL](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/azure/README.md)
 
 ### Pasos para crear el proyecto
 ```
