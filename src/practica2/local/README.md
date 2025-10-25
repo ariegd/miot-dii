@@ -5,7 +5,7 @@ Tendremos tres archivos php con la lógica del sitio web
 - insert.php
 - index.php
 
-![Descripción de la imagen](https://picsum.photos/800/600)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2011-59-56.png)
 
 2. Capturas de pantalla que demuestren:
 Las capturas de pantalla estarán en una carpeta img y en [GiHub](https://github.com/ariegd/miot-dii/tree/LAB2) y [YouTube](https://www.youtube.com/watch?v=Mk82p_wjyF8) historico de commit y videos.
@@ -14,7 +14,7 @@ Las capturas de pantalla estarán en una carpeta img y en [GiHub](https://github
 * La BD con registros almacenados en local
 [video](https://www.youtube.com/watch?v=Mk82p_wjyF8)
 
-![Descripción de la imagen](https://picsum.photos/800/600)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-00-29.png)
 
 3. Instrucciones de despliegue breves (README), que incluyan:
 * Instalación: de paquetes y servicios necesarios:
@@ -23,15 +23,18 @@ Los paquete necesarios se van a instalar ejecutando el script **instalar.sh**. D
 #consola
     echo "dos: Instalar Nginx (Servidor Web)"
     sudo apt install nginx -y
+    
     echo "tres: Instalar MariaDB (Base de Datos)"
     sudo apt install mariadb-server -y
+    
     echo "cuatro: configurar mariadb"
     sudo mysql_secure_installation
+    
     echo "cinco: Instala PHP-FPM, la librería MySQL (mysqli) y otras comunes"
     sudo apt install php-fpm php-mysql php-cli -y
 ```
 
-![Descripción de la imagen](https://picsum.photos/800/600)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-01-00.png)
 
 * Configuración: Pasos esenciales en local 
 Una vez instalados los paquete necesarios se debe configurar y copiar los archivos al directorio de Nginx
@@ -68,7 +71,7 @@ Una vez instalados los paquete necesarios se debe configurar y copiar los archiv
     ~$ sudo systemctl reload nginx
 ```
 
-![Descripción de la imagen](https://picsum.photos/800/600)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-01-39.png)
   
 4. Script SQL: Fichero .sql los comandos de creación de usuario, BD y tablas
 Para crear las tablas y creación de usuarios ejecutar el script de sql
@@ -77,5 +80,5 @@ Para crear las tablas y creación de usuarios ejecutar el script de sql
     ~$ sudo mysql webdb < webdb.sql
 ```
 
-![Descripción de la imagen](https://picsum.photos/800/600)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-02-38.png)
 
