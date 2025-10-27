@@ -16,11 +16,12 @@ Máster IoT, curso 25-26
 
 2. Capturas de pantalla que demuestren:
 * La aplicación funcionando en Azure (URL accesible).
-[video](https://www.youtube.com/watch?v=Mk82p_wjyF8)
-![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-01-00.png)
+[video](https://youtu.be/jAsKYMN4Y04)
+[URL accesible](https://basic-nginx-php-app.azurewebsites.net/)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/azure/img/Captura%20desde%202025-10-27%2001-22-31.png)
 * La BD con registros almacenados tanto en local como en Azure.
-[video](https://www.youtube.com/watch?v=Mk82p_wjyF8)
-![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-01-00.png)
+[video](https://youtu.be/JowxjxirgfM)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/azure/img/Captura%20desde%202025-10-27%2001-11-42.png)
 
 3. Instrucciones de despliegue breves (README), que incluyan:
 Como en conferencia nos hemos creado una cuenta en Microsoft Azure. Pasamos directamente a registrar el servicio:
@@ -176,4 +177,4 @@ if (mysqli_connect_errno()) {
 ?>
 ```
 
-![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/img/Captura%20desde%202025-10-25%2012-01-00.png)
+![Descripción de la imagen](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/azure/img/Captura%20desde%202025-10-27%2001-10-44.png)
