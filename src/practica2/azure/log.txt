@@ -1,0 +1,356 @@
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp config appsettings set \
+  --name basic-nginx-php-app \
+  --resource-group tutoriales \
+  --settings \
+  DB_HOST='mi-mysql-server-77.mysql.database.azure.com' \
+  DB_USER='arielweb' \
+  DB_PASSWORD='ClaveWeb2025!' \
+  DB_NAME='webdb'
+[
+  {
+    "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+    "slotSetting": false,
+    "value": null
+  },
+  {
+    "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+    "slotSetting": false,
+    "value": null
+  },
+  {
+    "name": "DB_HOST",
+    "slotSetting": false,
+    "value": null
+  },
+  {
+    "name": "DB_USER",
+    "slotSetting": false,
+    "value": null
+  },
+  {
+    "name": "DB_PASSWORD",
+    "slotSetting": false,
+    "value": null
+  },
+  {
+    "name": "DB_NAME",
+    "slotSetting": false,
+    "value": null
+  }
+]
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp config appsettings list \
+  --name basic-nginx-php-app \
+  --resource-group tutoriales \
+  --output table
+Name                                SlotSetting    Value
+----------------------------------  -------------  -------------------------------------------
+SCM_DO_BUILD_DURING_DEPLOYMENT      False          True
+WEBSITE_HTTPLOGGING_RETENTION_DAYS  False          3
+DB_HOST                             False          mi-mysql-server-77.mysql.database.azure.com
+DB_USER                             False          arielweb
+DB_PASSWORD                         False          ClaveWeb2025!
+DB_NAME                             False          webdb
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp up --name basic-nginx-php-app --resource-group tutoriales --location "spaincentral" --sku F1 --runtime "PHP|8.2" --os-type Linux
+Webapp 'basic-nginx-php-app' already exists. The command will deploy contents to the existing app.
+Creating AppServicePlan 'arielg01_asp_4340' or Updating if already exists
+Creating zip with contents of dir /home/zodd/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Warming up Kudu before deployment.
+Deployment endpoint responded with status code 202
+Polling the status of async deployment. Start Time: 2025-10-27 00:02:43.741765+00:00 UTC
+Status: Building the app... Time: 0(s)
+Status: Build successful. Time: 21(s)
+Status: Site started successfully. Time: 37(s)
+You can launch the app at http://basic-nginx-php-app.azurewebsites.net
+Setting 'az webapp up' default arguments for current directory. Manage defaults with 'az configure --scope local'
+--resource-group/-g default: tutoriales
+--sku default: F1
+--plan/-p default: arielg01_asp_4340
+--location/-l default: spaincentral
+--name/-n default: basic-nginx-php-app
+{
+  "URL": "http://basic-nginx-php-app.azurewebsites.net",
+  "appserviceplan": "arielg01_asp_4340",
+  "location": "spaincentral",
+  "name": "basic-nginx-php-app",
+  "os": "Linux",
+  "resourcegroup": "tutoriales",
+  "runtime_version": "PHP|8.2",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "//home//zodd//Documentos//@Documentos//Master2025//2025_Master_Universitario_IoT//5-DII_APP//laboratorio//miot-dii//src//practica2//azure"
+}
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$  az webapp restart \
+  --name basic-nginx-php-app \
+  --resource-group tutoriales
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp log tail --name basic-nginx-php-app --resource-group tutoriales
+2025-10-27T00:03:50  Welcome, you are now connected to log-streaming service.
+Starting Log Tail -n 10 of existing logs ----
+
+/home/LogFiles/kudu/trace/0712dad68191-5da3f57a-e7f8-45ff-a6b4-7a08ce7291a7.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/0712dad68191-5da3f57a-e7f8-45ff-a6b4-7a08ce7291a7.txt)
+2025-10-27T00:02:41  Startup Request, url: /api/zipdeploy?isAsync=true, method: POST, type: request, pid: 767,1,16, SCM_DO_BUILD_DURING_DEPLOYMENT: True, ScmType: None
+/home/LogFiles/kudu/trace/c338cde282bb-a97afd5e-d424-4d7a-a099-88d9b7cf1134.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/c338cde282bb-a97afd5e-d424-4d7a-a099-88d9b7cf1134.txt)
+2025-10-26T23:16:39  Startup Request, url: /api/zipdeploy?isAsync=true, method: POST, type: request, pid: 768,1,15, SCM_DO_BUILD_DURING_DEPLOYMENT: True, ScmType: None
+/home/LogFiles/2025_10_26_10-30-0-11_default_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_default_docker.log)
+2025-10-26T23:18:47.6909423Z #2 {main}
+2025-10-26T23:18:47.6909446Z 127.0.0.1 -  26/Oct/2025:23:18:47 +0000 "GET /index.php" 500
+2025-10-26T23:18:47.6909468Z   thrown in /home/site/wwwroot/db.php on line 8
+2025-10-26T23:19:02.6200691Z NOTICE: PHP message: PHP Fatal error:  Uncaught mysqli_sql_exception: No such file or directory in /home/site/wwwroot/db.php:8
+2025-10-26T23:19:02.6201376Z Stack trace:
+2025-10-26T23:19:02.6201418Z #0 /home/site/wwwroot/db.php(8): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'webdb')
+2025-10-26T23:19:02.6201447Z #1 /home/site/wwwroot/index.php(2): require('/home/site/wwwr...')
+2025-10-26T23:19:02.6201470Z #2 {main}
+2025-10-26T23:19:02.6201496Z 127.0.0.1 -  26/Oct/2025:23:19:02 +0000 "GET /index.php" 500
+2025-10-26T23:19:02.6201521Z   thrown in /home/site/wwwroot/db.php on line 8
+/home/LogFiles/2025_10_26_10-30-0-11_default_scm_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_default_scm_docker.log)
+2025-10-26T23:16:58.4137591Z 
+2025-10-26T23:16:58.4216803Z Copying files to destination directory '/home/site/wwwroot'...
+2025-10-26T23:16:58.4790905Z Done in 0 sec(s).
+2025-10-26T23:16:58.4866029Z 
+2025-10-26T23:16:58.5026664Z Removing existing manifest file
+2025-10-26T23:16:58.5104712Z Creating a manifest file...
+2025-10-26T23:16:58.5205044Z Manifest file created.
+2025-10-26T23:16:58.5316190Z Copying .ostype to manifest output directory.
+2025-10-26T23:16:58.5407429Z 
+2025-10-26T23:16:58.5546064Z Done in 2 sec(s).
+/home/LogFiles/2025_10_26_10-30-0-11_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_docker.log)
+2025-10-26T23:17:25.1392039Z Creating container with image: appsvc/php:8.2-fpm_20250722.4.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/php:8.2-fpm_20250722.4.tuxprod
+2025-10-26T23:17:29.5375701Z Starting container: aeec7bf292fa_basic-nginx-php-app.
+2025-10-26T23:17:29.8172367Z Starting watchers and probes.
+2025-10-26T23:17:29.8177722Z Starting metrics collection.
+2025-10-26T23:17:29.8179589Z Container is running.
+2025-10-26T23:17:29.9848164Z Container start method finished after 10657 ms.
+2025-10-26T23:17:51.0925903Z Site startup probe succeeded after 21.0393617 seconds.
+2025-10-26T23:17:51.4847772Z Site is running with deployment version: d25a0218-311d-4f96-ac1a-3a764ad2acbe
+2025-10-26T23:17:51.4867392Z Site started.
+2025-10-26T23:17:51.5671428Z Site is running with patch version: 8.2.29
+/home/LogFiles/2025_10_27_10-30-0-11_default_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_default_docker.log)
+2025-10-27T00:03:46.9181599Z done.
+2025-10-27T00:03:46.9269246Z CA certificates copied and updated successfully.
+2025-10-27T00:03:46.9272744Z Running oryx create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh     -bindPort 8080 -startupCommand 'php-fpm;'
+2025-10-27T00:03:47.0511850Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-10-27T00:03:47.0655997Z Build Operation ID: c01024f7af5962bf
+2025-10-27T00:03:47.6827176Z Writing output script to '/opt/startup/startup.sh'
+.php" 200
+2025-10-27T00:03:48.4055462Z Starting nginx: nginx.
+2025-10-27T00:03:48.6075135Z [27-Oct-2025 00:03:48] NOTICE: fpm is running, pid 1020
+2025-10-27T00:03:48.6127599Z [27-Oct-2025 00:03:48] NOTICE: ready to handle connections
+/home/LogFiles/2025_10_27_10-30-0-11_default_scm_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_default_scm_docker.log)
+2025-10-27T00:03:47.0583151Z Mon Oct 27 00:03:47 UTC 2025 running .net core
+2025-10-27T00:03:48.4757415Z Startup : 12.03.48.470695
+2025-10-27T00:03:48.4849744Z Configure Services : 12.03.48.484816
+2025-10-27T00:03:48.6425809Z Configure : 12.03.48.642417
+2025-10-27T00:03:48.7148258Z Setting Up Routes : 12.03.48.714674
+2025-10-27T00:03:48.8547233Z Exiting Configure : 12.03.48.854575
+2025-10-27T00:03:48.9047126Z Hosting environment: Production
+2025-10-27T00:03:48.9047621Z Content root path: /opt/Kudu
+2025-10-27T00:03:48.9047666Z Now listening on: http://0.0.0.0:8181
+2025-10-27T00:03:48.9047709Z Application started. Press Ctrl+C to shut down.
+/home/LogFiles/2025_10_27_10-30-0-11_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_docker.log)
+2025-10-27T00:03:41.3891857Z Creating container with image: appsvc/php:8.2-fpm_20250722.4.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/php:8.2-fpm_20250722.4.tuxprod
+2025-10-27T00:03:41.6620313Z Starting container: ca96f84f9c85_basic-nginx-php-app.
+2025-10-27T00:03:41.6907378Z Starting watchers and probes.
+2025-10-27T00:03:41.6919784Z Starting metrics collection.
+2025-10-27T00:03:41.6921450Z Container is running.
+2025-10-27T00:03:41.7319640Z Container start method finished after 769 ms.
+2025-10-27T00:03:48.8997957Z Site startup probe succeeded after 7.1643259 seconds.
+2025-10-27T00:03:48.9326643Z Site is running with deployment version: bf03d101-81c4-4851-ae11-755660dc09cf
+2025-10-27T00:03:48.9328868Z Site started.
+2025-10-27T00:03:48.9330940Z Site is running with patch version: 8.2.29
+Ending Log Tail of existing logs ---
+Starting Live Log Stream ---
+2025-10-27T00:03:48.4055462Z Starting nginx: nginx.
+2025-10-27T00:03:48.6075135Z [27-Oct-2025 00:03:48] NOTICE: fpm is running, pid 1020
+2025-10-27T00:03:48.6127599Z [27-Oct-2025 00:03:48] NOTICE: ready to handle connections
+2025-10-27T00:03:48.4757415Z Startup : 12.03.48.470695
+2025-10-27T00:03:48.4849744Z Configure Services : 12.03.48.484816
+2025-10-27T00:03:48.6425809Z Configure : 12.03.48.642417
+2025-10-27T00:03:48.7148258Z Setting Up Routes : 12.03.48.714674
+2025-10-27T00:03:48.8547233Z Exiting Configure : 12.03.48.854575
+2025-10-27T00:03:48.9047126Z Hosting environment: Production
+2025-10-27T00:03:48.9047621Z Content root path: /opt/Kudu
+2025-10-27T00:03:48.9047666Z Now listening on: http://0.0.0.0:8181
+2025-10-27T00:03:48.9047709Z Application started. Press Ctrl+C to shut down.
+2025-10-27T00:03:48.8997957Z Site startup probe succeeded after 7.1643259 seconds.
+2025-10-27T00:03:48.9326643Z Site is running with deployment version: bf03d101-81c4-4851-ae11-755660dc09cf
+2025-10-27T00:03:48.9328868Z Site started.
+2025-10-27T00:03:48.9330940Z Site is running with patch version: 8.2.29
+Log stream interrupted. Exiting live log stream.
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp up --name basic-nginx-php-app --resource-group tutoriales --location "spaincentral" --sku F1 --runtime "PHP|8.2" --os-type
+argument --os-type: expected one argument
+
+Examples from AI knowledge base:
+az webapp up --name MyUniqueAppName --location locationName
+Deploy new code to an app that was originally created using the same command
+
+az webapp up --name MyUniqueAppName --html
+Create a web app and deploy as a static HTML app.
+
+https://docs.microsoft.com/en-US/cli/azure/webapp#az_webapp_up
+Read more about the command in reference docs
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp up --name basic-nginx-php-app --resource-group tutoriales --location "spaincentral" --sku F1 --runtime "PHP|8.2" --os-type Linux
+Webapp 'basic-nginx-php-app' already exists. The command will deploy contents to the existing app.
+Creating AppServicePlan 'arielg01_asp_4340' or Updating if already exists
+Creating zip with contents of dir /home/zodd/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Warming up Kudu before deployment.
+Deployment endpoint responded with status code 202
+Polling the status of async deployment. Start Time: 2025-10-27 00:08:21.595720+00:00 UTC
+Status: Building the app... Time: 0(s)
+Status: Build successful. Time: 16(s)
+Status: Site started successfully. Time: 32(s)
+You can launch the app at http://basic-nginx-php-app.azurewebsites.net
+Setting 'az webapp up' default arguments for current directory. Manage defaults with 'az configure --scope local'
+--resource-group/-g default: tutoriales
+--sku default: F1
+--plan/-p default: arielg01_asp_4340
+--location/-l default: spaincentral
+--name/-n default: basic-nginx-php-app
+{
+  "URL": "http://basic-nginx-php-app.azurewebsites.net",
+  "appserviceplan": "arielg01_asp_4340",
+  "location": "spaincentral",
+  "name": "basic-nginx-php-app",
+  "os": "Linux",
+  "resourcegroup": "tutoriales",
+  "runtime_version": "PHP|8.2",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "//home//zodd//Documentos//@Documentos//Master2025//2025_Master_Universitario_IoT//5-DII_APP//laboratorio//miot-dii//src//practica2//azure"
+}
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$  az webapp restart \ 
+  --name basic-nginx-php-app \
+  --resource-group tutoriales
+(base) zodd@nootbster:~/Documentos/@Documentos/Master2025/2025_Master_Universitario_IoT/5-DII_APP/laboratorio/miot-dii/src/practica2/azure$ az webapp log tail --name basic-nginx-php-app --resource-group tutoriales
+2025-10-27T00:10:14  Welcome, you are now connected to log-streaming service.
+Starting Log Tail -n 10 of existing logs ----
+/home/LogFiles/kudu/trace/0712dad68191-5da3f57a-e7f8-45ff-a6b4-7a08ce7291a7.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/0712dad68191-5da3f57a-e7f8-45ff-a6b4-7a08ce7291a7.txt)
+2025-10-27T00:02:41  Startup Request, url: /api/zipdeploy?isAsync=true, method: POST, type: request, pid: 767,1,16, SCM_DO_BUILD_DURING_DEPLOYMENT: True, ScmType: None
+/home/LogFiles/kudu/trace/1ccd9ad2f4e8-57773c4e-1a23-4161-917b-42fe1ac1b478.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/1ccd9ad2f4e8-57773c4e-1a23-4161-917b-42fe1ac1b478.txt)
+2025-10-27T00:10:14  Startup Request, url: /logstream, method: GET, type: request, pid: 768,1,14, ScmType: None, SCM_DO_BUILD_DURING_DEPLOYMENT: True
+/home/LogFiles/kudu/trace/713d366b982c-7ada4d0e-3b1c-4cb3-ac18-c7a5b464b51f.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/713d366b982c-7ada4d0e-3b1c-4cb3-ac18-c7a5b464b51f.txt)
+2025-10-27T00:04:46  Startup Request, url: /api/deployments/?$orderby=ReceivedTime%20desc&$top=20&api-version=2022-03-01, method: GET, type: request, pid: 768,1,14, ScmType: None, SCM_DO_BUILD_DURING_DEPLOYMENT: True
+/home/LogFiles/kudu/trace/c338cde282bb-a97afd5e-d424-4d7a-a099-88d9b7cf1134.txt  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace/c338cde282bb-a97afd5e-d424-4d7a-a099-88d9b7cf1134.txt)
+2025-10-26T23:16:39  Startup Request, url: /api/zipdeploy?isAsync=true, method: POST, type: request, pid: 768,1,15, SCM_DO_BUILD_DURING_DEPLOYMENT: True, ScmType: None
+/home/LogFiles/2025_10_26_10-30-0-11_default_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_default_docker.log)
+2025-10-26T23:18:47.6909423Z #2 {main}
+2025-10-26T23:18:47.6909446Z 127.0.0.1 -  26/Oct/2025:23:18:47 +0000 "GET /index.php" 500
+2025-10-26T23:18:47.6909468Z   thrown in /home/site/wwwroot/db.php on line 8
+2025-10-26T23:19:02.6200691Z NOTICE: PHP message: PHP Fatal error:  Uncaught mysqli_sql_exception: No such file or directory in /home/site/wwwroot/db.php:8
+2025-10-26T23:19:02.6201376Z Stack trace:
+2025-10-26T23:19:02.6201418Z #0 /home/site/wwwroot/db.php(8): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'webdb')
+2025-10-26T23:19:02.6201447Z #1 /home/site/wwwroot/index.php(2): require('/home/site/wwwr...')
+2025-10-26T23:19:02.6201470Z #2 {main}
+2025-10-26T23:19:02.6201496Z 127.0.0.1 -  26/Oct/2025:23:19:02 +0000 "GET /index.php" 500
+2025-10-26T23:19:02.6201521Z   thrown in /home/site/wwwroot/db.php on line 8
+/home/LogFiles/2025_10_26_10-30-0-11_default_scm_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_default_scm_docker.log)
+2025-10-26T23:16:58.4137591Z 
+2025-10-26T23:16:58.4216803Z Copying files to destination directory '/home/site/wwwroot'...
+2025-10-26T23:16:58.4790905Z Done in 0 sec(s).
+2025-10-26T23:16:58.4866029Z 
+2025-10-26T23:16:58.5026664Z Removing existing manifest file
+2025-10-26T23:16:58.5104712Z Creating a manifest file...
+2025-10-26T23:16:58.5205044Z Manifest file created.
+2025-10-26T23:16:58.5316190Z Copying .ostype to manifest output directory.
+2025-10-26T23:16:58.5407429Z 
+2025-10-26T23:16:58.5546064Z Done in 2 sec(s).
+/home/LogFiles/2025_10_26_10-30-0-11_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_26_10-30-0-11_docker.log)
+2025-10-26T23:17:25.1392039Z Creating container with image: appsvc/php:8.2-fpm_20250722.4.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/php:8.2-fpm_20250722.4.tuxprod
+2025-10-26T23:17:29.5375701Z Starting container: aeec7bf292fa_basic-nginx-php-app.
+2025-10-26T23:17:29.8172367Z Starting watchers and probes.
+2025-10-26T23:17:29.8177722Z Starting metrics collection.
+2025-10-26T23:17:29.8179589Z Container is running.
+2025-10-26T23:17:29.9848164Z Container start method finished after 10657 ms.
+2025-10-26T23:17:51.0925903Z Site startup probe succeeded after 21.0393617 seconds.
+2025-10-26T23:17:51.4847772Z Site is running with deployment version: d25a0218-311d-4f96-ac1a-3a764ad2acbe
+2025-10-26T23:17:51.4867392Z Site started.
+2025-10-26T23:17:51.5671428Z Site is running with patch version: 8.2.29
+/home/LogFiles/2025_10_27_10-30-0-11_default_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_default_docker.log)
+2025-10-27T00:09:25.5227213Z done.
+2025-10-27T00:09:25.5367061Z CA certificates copied and updated successfully.
+2025-10-27T00:09:25.5373019Z Running oryx create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh     -bindPort 8080 -startupCommand 'php-fpm;'
+2025-10-27T00:09:25.5598347Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-10-27T00:09:25.5639604Z Build Operation ID: a26ebeab3249d525
+2025-10-27T00:09:25.7764129Z Writing output script to '/opt/startup/startup.sh'
+2025-10-27T00:09:26.0986606Z Starting nginx: nginx.
+2025-10-27T00:09:26.4104017Z [27-Oct-2025 00:09:26] NOTICE: fpm is running, pid 1019
+2025-10-27T00:09:26.4142703Z [27-Oct-2025 00:09:26] NOTICE: ready to handle connections
+2025-10-27T00:10:07.2580135Z 127.0.0.1 -  27/Oct/2025:00:10:07 +0000 "GET /index.php" 200
+/home/LogFiles/2025_10_27_10-30-0-11_default_scm_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_default_scm_docker.log)
+2025-10-27T00:09:26.3244180Z Mon Oct 27 00:09:26 UTC 2025 running .net core
+2025-10-27T00:09:27.1159804Z Startup : 12.09.27.111915
+2025-10-27T00:09:27.1383459Z Configure Services : 12.09.27.138129
+2025-10-27T00:09:27.4615708Z Configure : 12.09.27.461391
+2025-10-27T00:09:27.9198855Z Setting Up Routes : 12.09.27.919648
+2025-10-27T00:09:28.1863865Z Exiting Configure : 12.09.28.186019
+2025-10-27T00:09:28.2337528Z Hosting environment: Production
+2025-10-27T00:09:28.2338772Z Content root path: /opt/Kudu
+2025-10-27T00:09:28.2342236Z Now listening on: http://0.0.0.0:8181
+2025-10-27T00:09:28.2342393Z Application started. Press Ctrl+C to shut down.
+/home/LogFiles/2025_10_27_10-30-0-11_docker.log  (https://basic-nginx-php-app.scm.azurewebsites.net/api/vfs/LogFiles/2025_10_27_10-30-0-11_docker.log)
+2025-10-27T00:09:26.3272181Z Site is running with deployment version: 39c8276b-7930-467a-90f8-31189414f541
+2025-10-27T00:09:26.3281633Z Site started.
+2025-10-27T00:09:26.3284925Z Site is running with patch version: 8.2.29
+2025-10-27T00:09:46.7788946Z Container is terminating. Grace period: 5 seconds.
+2025-10-27T00:09:46.7849237Z Stop and delete container. Retry count = 0
+
+2025-10-27T00:09:46.7852164Z Stopping container: 60dc8451cfff_basic-nginx-php-app.
+2025-10-27T00:09:53.3125344Z Deleting container: 60dc8451cfff_basic-nginx-php-app. Retry count = 0
+2025-10-27T00:09:53.4637358Z Container spec TerminationMessagePolicy  path 
+2025-10-27T00:09:53.4659345Z Container is terminated. Total time elapsed: 6686 ms.
+2025-10-27T00:09:53.4673673Z Site: basic-nginx-php-app stopped.
+Ending Log Tail of existing logs ---
+Starting Live Log Stream ---
+2025-10-27T00:10:07.2580135Z 127.0.0.1 -  27/Oct/2025:00:10:07 +0000 "GET /index.php" 200
+2025-10-27T00:10:26.1304805Z 127.0.0.1 -  27/Oct/2025:00:10:26 +0000 "GET /index.php" 200
+2025-10-27T00:10:31.8763851Z 127.0.0.1 -  27/Oct/2025:00:10:31 +0000 "POST /insert.php" 302
+2025-10-27T00:10:31.9984276Z 127.0.0.1 -  27/Oct/2025:00:10:31 +0000 "GET /index.php" 200
+2025-10-27T00:00:37.4327199Z    _____                               
+2025-10-27T00:00:37.4328855Z   /  _  \ __________ _________   ____  
+2025-10-27T00:00:37.4328918Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-27T00:00:37.4328956Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-27T00:00:37.4329028Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-27T00:00:37.4329075Z         \/      \/                  \/ 
+2025-10-27T00:00:37.4329107Z A P P   S E R V I C E   O N   L I N U X
+2025-10-27T00:00:37.4329137Z 
+2025-10-27T00:00:37.4329173Z Documentation: http://aka.ms/webapp-linux
+2025-10-27T00:00:37.4329208Z PHP quickstart: https://aka.ms/php-qs
+2025-10-27T00:00:37.4329241Z PHP version : 8.2.29
+2025-10-27T00:00:37.4329286Z Note: Any data outside '/home' is not persisted
+2025-10-27T00:00:38.5713544Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-27T00:00:38.8163713Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-27T00:00:38.9095205Z Updating certificates in /etc/ssl/certs...
+2025-10-27T00:00:44.8128211Z 4 added, 0 removed; done.
+2025-10-27T00:00:44.8129153Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-27T00:00:44.8929696Z done.
+2025-10-27T00:00:44.8996806Z CA certificates copied and updated successfully.
+2025-10-27T00:00:44.9006439Z Running oryx create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh     -bindPort 8080 -startupCommand 'php-fpm;'
+2025-10-27T00:00:45.0358138Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-10-27T00:00:45.0377985Z Build Operation ID: 83bc73dab848b541
+2025-10-27T00:00:45.7858185Z Writing output script to '/opt/startup/startup.sh'
+2025-10-27T00:00:46.6894044Z Starting nginx: nginx.
+2025-10-27T00:00:47.0792790Z [27-Oct-2025 00:00:47] NOTICE: fpm is running, pid 1021
+2025-10-27T00:00:47.0856101Z [27-Oct-2025 00:00:47] NOTICE: ready to handle connections
+2025-10-27T00:03:07.0114097Z    _____                               
+2025-10-27T00:03:07.0131960Z   /  _  \ __________ _________   ____  
+2025-10-27T00:03:07.0132052Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-27T00:03:07.0132080Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-27T00:03:07.0132101Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-27T00:03:07.0132129Z         \/      \/                  \/ 
+2025-10-27T00:03:07.0132181Z A P P   S E R V I C E   O N   L I N U X
+2025-10-27T00:03:07.0132200Z 
+2025-10-27T00:03:07.0132228Z Documentation: http://aka.ms/webapp-linux
+2025-10-27T00:03:07.0132251Z PHP quickstart: https://aka.ms/php-qs
+2025-10-27T00:03:07.0132272Z PHP version : 8.2.29
+2025-10-27T00:03:07.0132293Z Note: Any data outside '/home' is not persisted
+2025-10-27T00:03:07.8556037Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-27T00:03:07.8556250Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-27T00:03:07.8556299Z Updating certificates in /etc/ssl/certs...
+2025-10-27T00:03:10.3895377Z 4 added, 0 removed; done.
+2025-10-27T00:03:10.3896211Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-27T00:03:10.3917151Z done.
+2025-10-27T00:03:10.3978744Z CA certificates copied and updated successfully.
+2025-10-27T00:03:10.3981401Z Running oryx create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh     -bindPort 8080 -startupCommand 'php-fpm;'
+2025-10-27T00:03:10.4064021Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
