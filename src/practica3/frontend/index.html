@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <meta http-equiv="Content-Security-Policy"
+              content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline';
+                       connect-src * http://192.168.1.39:5000 http://* https://*;
+                       style-src * 'unsafe-inline';
+                       media-src *;
+                       img-src * data:;">
       <title>Gestión de Asistentes</title>
 </head>
-<body>
-    <h1>¡Hola Mundo desde Cordova!</h1>
-    <script src="cordova.js"></script>
-    <script src="js/index.js"></script>
-    
+<body>  
   <h2>Gestión de Asistentes</h2>
 
   <label>URL del servidor:</label><br>
-  <input type="text" id="serverUrl" value="http://localhost:5000/asistentes" size="50"><br><br>
+  <input type="text" id="serverUrl" value="http://192.168.1.39:5000/asistentes" size="50"><br><br>
 
   <h3>Registrar nuevo asistente</h3>
   <form id="formRegistro" onsubmit="event.preventDefault(); registrar();">
@@ -76,5 +78,7 @@
       }
     }
   </script>
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

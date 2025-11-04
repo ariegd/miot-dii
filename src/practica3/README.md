@@ -6,8 +6,8 @@ Máster IoT, curso 25-26
  		└── Jose Villacres <jvillacr@ucm.es>
 ```
 **Índice**
-1. [Listar los asistentes registrados.](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/local/README.md)
-2. [Registrar un nuevo asistente.](https://github.com/ariegd/miot-dii/blob/LAB2/src/practica2/azure/README.md)
+1. [Listar los asistentes registrados.](https://github.com/ariegd/miot-dii/blob/LAB3/src/practica3/backend/README.md)
+2. [Registrar un nuevo asistente.](https://github.com/ariegd/miot-dii/blob/LAB3/src/practica3/frontend/README.md)
 
 ### Pasos para crear el proyecto
 ```
@@ -17,3 +17,9 @@ Indice
 ├── 3) Ejecución en browser (2.5 PUNTOS)
 └── 4) Ejecución en Android (2.5 PUNTOS)
 ```
+### Respositorio y videos de refuerzo
+* [GitHub](https://github.com/ariegd/miot-dii/tree/LAB3)
+* [Video browser parte 01](https://youtu.be/5HkDRjEdgxE)
+* [Video browser parte 02](https://youtu.be/FyJBAlQtnPI)
+* [Video android parte 01](https://youtube.com/shorts/nbkTmCIUh3I)
+* [Video android parte 02](https://youtube.com/shorts/kAJvIabhJ7w) 
