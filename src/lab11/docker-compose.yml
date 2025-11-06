@@ -1,0 +1,25 @@
+services:
+  db:
+    build: ./bd-congreso
+    container_name: bd-congreso
+    environment:
+      POSTGRES_USER: organizador
+      POSTGRES_PASSWORD: clave123
+      POSTGRES_DB: congresodb
+    networks:
+      - congreso-net
+
+  app:
+    build: ./app-congreso
+    container_name: app-congreso
+    ports:
+      - "25000:5000"
+    environment:
+      DB_HOST: bd-congreso
+    depends_on:
+      - db
+    networks:
+      - congreso-net
+
+networks:
+  congreso-net:

@@ -1,0 +1,39 @@
+name: CI con Docker Compose
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test_services:
+    runs-on: ubuntu-latest  # El ejecutor ya trae Docker y Docker Compose preinstalados
+
+    steps:
+      - name: Checkout del código
+        # Descarga el código de tu repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir y levantar servicios con Docker Compose
+        # Usa el comando 'up' para construir las imágenes (ya que usas 'build' en tu .yml) 
+        # y arrancar todos los servicios en segundo plano (-d).
+        # Nota: Puedes usar 'docker compose' (nuevo) o 'docker-compose' (antiguo).
+        run: docker compose up -d
+
+      # Este es el paso crucial para esperar a que la DB esté lista.
+      # La aplicación depende de la DB, y el arranque de la DB a veces es lento.
+      - name: Esperar a que la Base de Datos se inicialice
+        # Usamos 'sleep' para dar tiempo, pero es mejor usar una herramienta de "health check"
+        run: sleep 10 
+
+      - name: Ejecutar Pruebas (Ejemplo)
+        # Una vez que los servicios están listos, puedes ejecutar comandos
+        # dentro de tu contenedor 'app' para lanzar tus pruebas unitarias o de integración.
+        run: docker compose exec app python run_tests.py # (Ajusta este comando a tu lenguaje real)
+
+      - name: Detener servicios de Docker Compose (limpieza)
+        # Detiene y elimina los contenedores y la red creada.
+        # Esto es importante para una buena limpieza del entorno de CI.
+        if: always() # Se ejecuta incluso si las pruebas fallan
+        run: docker compose down
