@@ -1,15 +1,14 @@
 # Aprobado. Servicio REST funcional con Jersey + Grizzly
-```
-objetivos
-├── 1) Crear un servidor HTTP embebido ejecutable mediante un método main() que configure y lance el servicio REST
-├── 2) Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/
-├── 3) Ser completamente funcional sin depender de un contenedor externo (como Tomcat o GlassFish)
-├── 4) Permitir realizar operaciones GET, POST, PUT y DELETE, aceptando parámetros en la URL y devolviendo datos en formato JSON
-├── 5) Implementar el recurso REST con las anotaciones de JAX-RS ( @Path, @GET, @POST, etc.)
-├── 6) Tener verificado su funcionamiento con curl, o herramientas equivalentes
-└── 7) Crear un Dockerfile que construya la aplicación y ejecute el servicio REST al lanzar el contenedor.
-```
+## objetivos
+1) [Crear un servidor HTTP embebido ejecutable mediante un método main() que configure y lance el servicio REST](#paso1 )
+2) [Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/](# paso2)
+3) [Ser completamente funcional sin depender de un contenedor externo (como Tomcat o GlassFish)](#paso3)
+4) [Permitir realizar operaciones GET, POST, PUT y DELETE, aceptando parámetros en la URL y devolviendo datos en formato JSON](#paso4)
+5) [Implementar el recurso REST con las anotaciones de JAX-RS ( @Path, @GET, @POST, etc.)](#paso5)
+6) [Tener verificado su funcionamiento con curl, o herramientas equivalentes](#paso6)
+7) [Crear un Dockerfile que construya la aplicación y ejecute el servicio REST al lanzar el contenedor.](#paso7 )
 
+<a name="paso1"></a>
 ## Paso 1: Crear un servidor HTTP embebido ejecutable mediante un método main() que configure y lance el servicio REST
 1. Crear el archivo `ServidorJerser.java`, con el método `main()`
 ```
@@ -30,6 +29,7 @@ Grizzly 2 (Explícitamente configurado)
 // Configuración de Recursos: 
 ResourceConfig rc = new ResourceConfig().register(LibrosResource.class)
 ```
+<a name="paso2"></a>
 ## Paso 2: Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/
 1.  URI base donde se publicará el servicio (Base URI)
 ```
@@ -39,11 +39,13 @@ ResourceConfig rc = new ResourceConfig().register(LibrosResource.class)
 ```
 rc.register(LibrosResource.class);
 ```
+<a name="paso3"></a>
 ## Paso 3: Ser completamente funcional sin depender de un contenedor externo (como Tomcat o GlassFish)
 1.  Crear y arrancar la instancia de Grizzly HttpServer
 ```
 return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
 ```
+<a name="paso4"></a>
 ## Paso 4: Permitir realizar operaciones GET, POST, PUT y DELETE, aceptando parámetros en la URL y devolviendo datos en formato JSON
 1. Crear el archivo `LibrosResource.java`
 ```
@@ -81,12 +83,14 @@ rc.register(new JacksonJsonProvider());
         return Response.status(Response.Status.CREATED).build();
     }
 ```
+<a name="paso5"></a>
 ## Paso 5: Implementar el recurso REST con las anotaciones de JAX-RS ( @Path, @GET, @POST, etc.)
 1. La Configuración Central (ResourceConfig) --> `ServidorJerser.java`
 ```
 // El método .packages("rest") le dice a Jersey: "Escanea el paquete llamado 'rest', busca clases con anotaciones JAX-RS (como @Path) y regístralas automáticamente".
 final ResourceConfig rc = new ResourceConfig().packages("rest");
 ```
+<a name="paso6"></a>
 ## Paso 6: Tener verificado su funcionamiento con curl, o herramientas equivalentes
 1. Crear directorio `jax-rs-libs` con dependencias necesarias
 ```
@@ -128,6 +132,7 @@ curl -i -X DELETE "http://localhost:8080/rest/libros?id=3"
 # o 
 | python3 -m json.tool
 ```
+<a name="paso7"></a>
 ## Paso 7: Crear un Dockerfile que construya la aplicación y ejecute el servicio REST al lanzar el contenedor.
 1. ETAPA BASE: Utilizamos la imagen oficial de OpenJDK 17
 ```

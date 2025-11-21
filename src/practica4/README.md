@@ -11,14 +11,10 @@ Máster IoT, curso 25-26
 
 ### La aplicación deberá
 ```
-objetivos
-├── 1) Crear un servidor HTTP embebido ejecutable mediante un método main() que configure y lance el servicio REST
-├── 2) Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/
-├── 3) Ser completamente funcional sin depender de un contenedor externo (como Tomcat o GlassFish)
-├── 4) Permitir realizar operaciones GET, POST, PUT y DELETE, aceptando parámetros en la URL y devolviendo datos en formato JSON
-├── 5) Implementar el recurso REST con las anotaciones de JAX-RS ( @Path, @GET, @POST, etc.)
-├── 6) Tener verificado su funcionamiento con curl, o herramientas equivalentes
-└── 7) Crear un Dockerfile que construya la aplicación y ejecute el servicio REST al lanzar el contenedor.
+Deberá entregar en el CV un fichero llamado practica4.zip con
+├── 1) Código fuente y todos los ficheros necesarios
+├── 2) Capturas o resultados
+└── 3) README con integrantes del grupo, descripción, dificultades encontradas, instrucciones de compilación y ejecución
 ```
 ### Respositorio y videos de refuerzo
 * [GitHub](https://github.com/ariegd/miot-dii/tree/LAB3)
