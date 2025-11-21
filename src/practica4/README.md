@@ -17,8 +17,6 @@ Deberá entregar en el CV un fichero llamado practica4.zip con
 └── 3) README con integrantes del grupo, descripción, dificultades encontradas, instrucciones de compilación y ejecución
 ```
 ### Respositorio y videos de refuerzo
-* [GitHub](https://github.com/ariegd/miot-dii/tree/LAB3)
-* [Video browser parte 01](https://youtu.be/5HkDRjEdgxE)
-* [Video browser parte 02](https://youtu.be/FyJBAlQtnPI)
-* [Video android parte 01](https://youtube.com/shorts/nbkTmCIUh3I)
-* [Video android parte 02](https://youtube.com/shorts/kAJvIabhJ7w) 
+* [GitHub](https://github.com/ariegd/miot-dii/tree/LAB4)
+* [Video Servicio REST funcional con Jersey + Grizzly](https://youtu.be/YxQdHp8CHVo)
+

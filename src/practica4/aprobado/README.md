@@ -1,7 +1,7 @@
 # Aprobado. Servicio REST funcional con Jersey + Grizzly
 ## objetivos
 1) [Crear un servidor HTTP embebido ejecutable mediante un método main() que configure y lance el servicio REST](#paso1 )
-2) [Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/](# paso2)
+2) [Exponer al menos un recurso REST (/libros, /alumnos, etc.) bajo la ruta base http://localhost:8080/rest/](#paso2)
 3) [Ser completamente funcional sin depender de un contenedor externo (como Tomcat o GlassFish)](#paso3)
 4) [Permitir realizar operaciones GET, POST, PUT y DELETE, aceptando parámetros en la URL y devolviendo datos en formato JSON](#paso4)
 5) [Implementar el recurso REST con las anotaciones de JAX-RS ( @Path, @GET, @POST, etc.)](#paso5)
@@ -104,9 +104,6 @@ aprobado/
 ```
 2. Compilar. En nuestro caso a mediada que compilabamos, nos lanzaba excepciones con las *.jar faltantes.
 ```
-# Sin falta algún *.jar hay descargarlo en: https://mvnrepository.com/
-javac -cp "jax-rs-libs/*" ServidorJersey.java rest/LibrosResource.java
-
 # Tenemos que utilizar -Xlint:deprecation, para ver que está obsoleto
 javac -cp "jax-rs-libs/*" -d classes ServidorJersey.java rest/LibrosResource.java -Xlint:deprecation
 ```
