@@ -19,4 +19,7 @@ Deberá entregar en el CV un fichero llamado practica4.zip con
 ### Respositorio y videos de refuerzo
 * [GitHub](https://github.com/ariegd/miot-dii/tree/LAB4)
 * [Video Servicio REST funcional con Jersey + Grizzly](https://youtu.be/YxQdHp8CHVo)
+* [Video Incluye persistencia con MongoDB](https://youtu.be/u2o2K1TKPKk)
+
+
 
