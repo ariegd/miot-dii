@@ -4,54 +4,62 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 import java.util.*;
 
-// Recurso REST que gestiona libros
+import jakarta.inject.Inject; 
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+
 @Path("/libros")
 public class LibrosResource {
+    @Inject
+    private MongoDatabase database;
 
-    private static final Map<Integer, String> libros = new HashMap<>();
-    static {
-        libros.put(1, "El Quijote");
-        libros.put(2, "Cien años de soledad");
+    private MongoCollection<Document> getCollection() {
+        return database.getCollection("libros");
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Libro> obtenerLibros() {
         List<Libro> resultado = new ArrayList<>();
-        for (Map.Entry<Integer, String> entry : libros.entrySet()) {
-            resultado.add(new Libro(entry.getKey(), entry.getValue()));
+        // Usamos la conexión inyectada
+        for (Document doc : getCollection().find()) {
+            Libro libro = new Libro(doc.getInteger("id"), doc.getString("titulo"));
+            resultado.add(libro);
         }
         return resultado;
     }
 
     @PUT
     public Response crearLibro(@QueryParam("id") int id, 
-                               @QueryParam("titulo") String titulo) {
-        if (libros.containsKey(id)) {
-            return Response.status(
-                Response.Status.CONFLICT).entity("Ya existe").build();
+                                                          @QueryParam("titulo") String titulo) {
+        MongoCollection<Document> col = getCollection();
+        if (col.countDocuments(Filters.eq("id", id)) > 0) {
+            return Response.status(Response.Status.CONFLICT).entity("Ya existe").build();
         }
-        libros.put(id, titulo);
+        col.insertOne(new Document("id", id).append("titulo", titulo));
         return Response.status(Response.Status.CREATED).build();
     }
 
     @POST
     public Response actualizarLibro(@QueryParam("id") int id, 
-                                    @QueryParam("titulo") String titulo) {
-        if (!libros.containsKey(id)) {
+                                                                  @QueryParam("titulo") String titulo) {
+        var result = getCollection().updateOne(Filters.eq("id", id), Updates.set("titulo", titulo));           
+        if (result.getMatchedCount() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        libros.put(id, titulo);
         return Response.ok().build();
     }
 
     @DELETE
     public Response eliminarLibro(@QueryParam("id") int id) {
-        if (!libros.containsKey(id)) {
+        var result = getCollection().deleteOne(Filters.eq("id", id));
+            
+        if (result.getDeletedCount() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        libros.remove(id);
-
         return Response.ok().build();
     }
 
