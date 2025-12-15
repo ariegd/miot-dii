@@ -100,6 +100,11 @@ echo "Flujo completado correctamente"
 
 ## Uso recomendado
 
+0. Permisos
+```bash
+chmod 777 flow.sh
+```
+
 1. Construir la imagen (opcional):
 ```bash
 docker build -t foundry-local .

@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY flow.sh /workspace/flow.sh
 
 # Damos permisos de ejecución
-RUN chmod +x /workspace/flow.sh
+#RUN chmod +x /workspace/flow.sh
 
 # Comando por defecto (Anvil)
 CMD ["anvil", "--host", "0.0.0.0", "--allow-origin", "*"]
