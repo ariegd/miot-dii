@@ -18,14 +18,14 @@ contract InteractScript is Script {
 
         vm.startBroadcast(donorKey);
         bank.deposit{value: 10 ether}();
-        console.log("Cuenta 1 depositó 10 ETH");
+        console.log("Cuenta 1 deposito 10 ETH");
         vm.stopBroadcast();
 
         console.log("Saldo banco:", bank.getBalance());
 
         vm.startBroadcast(adminKey);
         bank.sendToFriend(payable(beneficiary), 5 ether);
-        console.log("Admin envió 5 ETH a Cuenta 2");
+        console.log("Admin envio 5 ETH a Cuenta 2");
         vm.stopBroadcast();
 
         console.log("Saldo final banco:", bank.getBalance());

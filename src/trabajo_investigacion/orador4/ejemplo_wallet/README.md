@@ -99,7 +99,6 @@ echo "Flujo completado correctamente"
 ---
 
 ## Uso recomendado
-
 0. Permisos
 ```bash
 chmod 777 flow.sh
@@ -117,6 +116,6 @@ docker run -d --rm --network host --name red-local foundry-local
 
 3. Ejecutar el flujo:
 ```bash
-source flow.sh
+bash flow.sh
 ```
 

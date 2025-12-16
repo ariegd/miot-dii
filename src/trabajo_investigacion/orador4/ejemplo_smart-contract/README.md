@@ -29,7 +29,7 @@ COPY src ./src
 COPY script ./script
 COPY setup_and_run.sh /setup_and_run.sh
 
-RUN chmod +x /setup_and_run.sh
+#RUN chmod +x /setup_and_run.sh
 
 # Anvil como proceso principal
 CMD ["anvil", "--host", "0.0.0.0", "--allow-origin", "*"]
@@ -50,11 +50,19 @@ Este script:
 set -e
 
 RPC_URL=http://127.0.0.1:8545
+WORKDIR=/code/tmp-local
 
-cd /code
+mkdir -p "$WORKDIR"
+cd "$WORKDIR"
+
+# Copiar scripts desde el proyecto original
+mkdir -p script
+cp /code/script/Interact.s.sol script/
+mkdir -p src
+cp /code/src/PiggyBank.sol src/
 
 if [ ! -f foundry.toml ]; then
-  echo "Inicializando proyecto Forge..."
+  echo "Inicializando proyecto Forge en $WORKDIR..."
   forge init --force .
 fi
 
@@ -76,9 +84,9 @@ EOF
 echo "Compilando contratos..."
 forge build
 
-echo "Ejecutando script de interacción..."
+echo "Ejecutando script de interaccion..."
 forge script script/Interact.s.sol:InteractScript \
-  --rpc-url $RPC_URL \
+  --rpc-url "$RPC_URL" \
   --broadcast
 
 echo "Flujo completo ejecutado correctamente"
@@ -145,14 +153,14 @@ contract InteractScript is Script {
 
         vm.startBroadcast(donorKey);
         bank.deposit{value: 10 ether}();
-        console.log("Cuenta 1 depositó 10 ETH");
+        console.log("Cuenta 1 deposito 10 ETH");
         vm.stopBroadcast();
 
         console.log("Saldo banco:", bank.getBalance());
 
         vm.startBroadcast(adminKey);
         bank.sendToFriend(payable(beneficiary), 5 ether);
-        console.log("Admin envió 5 ETH a Cuenta 2");
+        console.log("Admin envio 5 ETH a Cuenta 2");
         vm.stopBroadcast();
 
         console.log("Saldo final banco:", bank.getBalance());
@@ -165,15 +173,18 @@ contract InteractScript is Script {
 ## Uso
 
 ```bash
+# Cambiar permisos
+chmod 777 setup_and_run.sh
+
 # Construir imagen
 docker build -t piggybank-foundry .
 
-# Ejecutar Anvil
+# Ejecutar Anvil, nota en el directorio donde se va a crear proyecto
 docker run -it --rm --network host \
   -v $(pwd):/code \
   --name red-local piggybank-foundry
 
 # En otra terminal, ejecutar flujo
-docker exec -it red-local /setup_and_run.sh
+docker exec -it red-local sh /setup_and_run.sh
 ```
 

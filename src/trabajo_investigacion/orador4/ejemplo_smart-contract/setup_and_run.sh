@@ -1,13 +1,20 @@
-
 #!/usr/bin/env bash
 set -e
 
 RPC_URL=http://127.0.0.1:8545
+WORKDIR=/code/tmp-local
 
-cd /code
+mkdir -p "$WORKDIR"
+cd "$WORKDIR"
+
+# Copiar scripts desde el proyecto original
+mkdir -p script
+cp /code/script/Interact.s.sol script/
+mkdir -p src
+cp /code/src/PiggyBank.sol src/
 
 if [ ! -f foundry.toml ]; then
-  echo "Inicializando proyecto Forge..."
+  echo "Inicializando proyecto Forge en $WORKDIR..."
   forge init --force .
 fi
 
@@ -29,9 +36,10 @@ EOF
 echo "Compilando contratos..."
 forge build
 
-echo "Ejecutando script de interacción..."
+echo "Ejecutando script de interaccion..."
 forge script script/Interact.s.sol:InteractScript \
-  --rpc-url $RPC_URL \
+  --rpc-url "$RPC_URL" \
   --broadcast
 
 echo "Flujo completo ejecutado correctamente"
+
